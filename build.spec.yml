@@ -2,10 +2,9 @@ version: 0.2
 
 env:
   parameter-store:
-    AWS_REGION : REGION
-    ECR_URL: Ecr-url
-    IMAGE_NAME: Image-name
-
+    AWS_REGION : region
+    ECR_URL: ecr-url
+    IMAGE_NAME: image-name
 phases:
   install:
     runtime-versions:
