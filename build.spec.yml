@@ -19,14 +19,14 @@ phases:
   build:
     commands:
       - echo "Build the Image"
-      - docker build -t "$IMAGE_NAME:latest".
+      - docker build -t "$IMAGE_NAME:latest" .
       - echo "Tagging Docker Image"
-      - docker tag "$IMAGE_NAME":latest "$ECR_URL"/"$IMAGE_NAME":latest
+      - docker tag "$IMAGE_NAME:latest" "$ECR_URL/$IMAGE_NAME:latest"
 
   post_build:
     commands:
       - echo "Push Image ecr"
-      - docker push "$Ecr_url"/"$IMAGE_NAME":latest
+      - docker push "$ECR_URL/$IMAGE_NAME:latest"
 
   
   
