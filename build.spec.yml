@@ -1,0 +1,39 @@
+version: 0.2
+
+env:
+  parameter-store:
+    AWS_REGION : REGION
+    ECR_URL: ecr_url
+    Image-name: Image-name
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+
+  pre_build:
+    commands:
+      - echo "Login aws ecr"
+      - aws ecr get-login-password --region "$AWS_REGION"| docker login --username AWS --password-stdin "$ECR_URL"
+
+  build:
+    commands:
+      - echo "Build the Image"
+      - docker build -t "$Image-name:latest" .
+      - echo "Tagging Docker Image"
+      - docker tag "$Image-name":latest "$ECR_URL"/"$Image-name":latest
+
+  post_build:
+    commands:
+      - echo "Push Image ecr"
+      - docker push "$Ecr-url"/"$Image-name":latest
+
+  artifects:
+    files:
+      - wetherapp-035680193308-ap-southeast-2-an 
+
+
+  
+
+
+  
