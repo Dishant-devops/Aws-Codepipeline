@@ -3,8 +3,8 @@ version: 0.2
 env:
   parameter-store:
     region : region
-    ecr-url: ecr-url
-    image-name: image-name
+    ecr_url: ecr-url
+    image_name: image-name
 phases:
   install:
     runtime-versions:
@@ -13,19 +13,19 @@ phases:
   pre_build:
     commands:
       - echo "Login aws ecr"
-      - aws ecr get-login-password --region "$region"| docker login --username AWS --password-stdin "$ecr-url"
+      - aws ecr get-login-password --region "$region"| docker login --username AWS --password-stdin "$ecr_url"
 
   build:
     commands:
       - echo "Build the Image"
-      - docker build -t "$image-name:latest" .
+      - docker build -t "$image_name:latest" .
       - echo "Tagging Docker Image"
-      - docker tag "$image-name:latest" "$ecr-url/$image-name:latest"
+      - docker tag "$image_name:latest" "$ecr_url/$image_name:latest"
 
   post_build:
     commands:
       - echo "Push Image ecr"
-      - docker push "$ecr-url/$image-name:latest"
+      - docker push "$ecr_url/$image_name:latest"
 
   
   
