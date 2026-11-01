@@ -20,12 +20,12 @@ phases:
       - echo "Build the Image"
       - docker build -t "$image_name:latest" .
       - echo "Tagging Docker Image"
-      - docker tag "$image_name:latest" "$ecr_url/$image_name:latest"
+      - docker tag wetherapp:latest 035680193308.dkr.ecr.ap-southeast-2.amazonaws.com/wetherapp:latest
 
   post_build:
     commands:
       - echo "Push Image ecr"
-      - docker push "$ecr_url/$image_name:latest"
+      - docker push 035680193308.dkr.ecr.ap-southeast-2.amazonaws.com/wetherapp:latest
 
   
   
