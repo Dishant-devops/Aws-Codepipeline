@@ -3,7 +3,7 @@ version: 0.2
 env:
   parameter-store:
     AWS_REGION : REGION
-    ECR_URL: ecr_url
+    ECR_URL: Ecr-url
     IMAGE_NAME: Image-name
 
 phases:
