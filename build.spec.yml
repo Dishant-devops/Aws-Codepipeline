@@ -26,7 +26,7 @@ phases:
   post_build:
     commands:
       - echo "Push Image ecr"
-      - docker push "$Ecr-url"/"$IMAGE_NAME":latest
+      - docker push "$Ecr_url"/"$IMAGE_NAME":latest
 
   
   
