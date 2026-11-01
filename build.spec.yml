@@ -4,7 +4,7 @@ env:
   parameter-store:
     AWS_REGION : REGION
     ECR_URL: ecr_url
-    Image-name: Image-name
+    IMAGE_NAME: Image-name
 
 phases:
   install:
@@ -19,20 +19,16 @@ phases:
   build:
     commands:
       - echo "Build the Image"
-      - docker build -t "$Image-name:latest" .
+      - docker build -t "$IMAGE_NAME:latest" .
       - echo "Tagging Docker Image"
-      - docker tag "$Image-name":latest "$ECR_URL"/"$Image-name":latest
+      - docker tag "$IMAGE_NAME":latest "$ECR_URL"/"$IMAGE_NAME":latest
 
   post_build:
     commands:
       - echo "Push Image ecr"
-      - docker push "$Ecr-url"/"$Image-name":latest
+      - docker push "$Ecr-url"/"$IMAGE_NAME":latest
 
-  artifects:
-    files:
-      - wetherapp-035680193308-ap-southeast-2-an 
-
-
+  
   
 
 
