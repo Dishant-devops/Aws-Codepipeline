@@ -4,7 +4,7 @@ env:
   parameter-store:
     region : region
     ecr_url: ecr-url
-    image_name: image-name
+  
 phases:
   install:
     runtime-versions:
@@ -18,7 +18,7 @@ phases:
   build:
     commands:
       - echo "Build the Image"
-      - docker build -t "$image_name:latest" .
+      - docker build -t " wetherapp:latest" .
       - echo "Tagging Docker Image"
       - docker tag wetherapp:latest 035680193308.dkr.ecr.ap-southeast-2.amazonaws.com/wetherapp:latest
 
