@@ -3,7 +3,7 @@ version: 0.2
 env:
   parameter-store:
     region : region
-    ecr_url: ecr-url
+    
   
 phases:
   install:
@@ -26,6 +26,17 @@ phases:
     commands:
       - echo "Push Image ecr"
       - docker push 035680193308.dkr.ecr.ap-southeast-2.amazonaws.com/wetherapp:latest
+      - echo "Creating deployment metadata"
+      - printf '{"ImageURI":"%s"}' "035680193308.dkr.ecr.ap-southeast-2.amazonaws.com/wetherapp:latest" > imageDetail.json
+
+artifacts:
+  files:
+    - appspec.yml
+    - imageDetail.json
+    - scripts/**/*
+  discard-paths: no
+
+    
 
   
   
